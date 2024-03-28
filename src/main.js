@@ -6,8 +6,14 @@ var posterTitle = document.querySelector('.poster-title')
 console.log("label2<<<>>>", posterTitle)
 var posterQuote = document.querySelector('.poster-quote')
 console.log("label3<<<>>>", posterQuote)
-
 var randomButton = document.querySelector('.show-random')
+var formButton = document.querySelector('.show-form')
+var mainPage = document.querySelector('.main-poster')
+var formPage = document.querySelector('.poster-form')
+var savedPostersPage = document.querySelector('.saved-posters')
+var homeButton = document.querySelector('.show-main')
+var savedPostersButton = document.querySelector('.show-saved')
+var savedToHome = document.querySelector('.back-to-main')
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -113,6 +119,10 @@ var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
 randomButton.addEventListener('click', getRandomContent)
+formButton.addEventListener('click', showFormPage)
+homeButton.addEventListener('click', backToMain)
+savedPostersButton.addEventListener('click', showSavedPosters)
+savedToHome.addEventListener('click', backToMain)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -140,6 +150,22 @@ function getRandomContent() {
   posterImage.src = randomImage
   posterTitle.innerText = randomTitle;
   posterQuote.innerText = randomQuote;
+}
+
+function showFormPage() {
+  formPage.classList.remove('hidden');
+  mainPage.classList.add('hidden')
+}
+
+function backToMain() {
+  formPage.classList.add('hidden');
+  mainPage.classList.remove('hidden');
+  savedPostersPage.classList.add('hidden')
+}
+
+function showSavedPosters() {
+  savedPostersPage.classList.remove('hidden');
+  mainPage.classList.add('hidden')
 }
 
 getRandomContent();
