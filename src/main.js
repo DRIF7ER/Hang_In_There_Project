@@ -112,6 +112,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
+randomButton.addEventListener('click', getRandomContent)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -142,6 +143,3 @@ function getRandomContent() {
 }
 
 getRandomContent();
-
-randomButton.addEventListener('click', getRandomContent)
-
