@@ -7,6 +7,8 @@ console.log("label2<<<>>>", posterTitle)
 var posterQuote = document.querySelector('.poster-quote')
 console.log("label3<<<>>>", posterQuote)
 
+var randomButton = document.querySelector('.show-random')
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,6 +112,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
+randomButton.addEventListener('click', getRandomContent)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
