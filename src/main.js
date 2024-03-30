@@ -21,6 +21,9 @@ var quoteInput = document.querySelector("#poster-quote");
 var showMyPosterButton = document.querySelector('.make-poster');
 var poster = document.querySelector('.poster');
 
+//Iteration 3
+var saveThisPosterButton = document.querySelector('.save-poster')
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -121,7 +124,6 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 
-
 var savedPosters = [];
 var currentPoster;
 // event listeners go here 👇
@@ -131,13 +133,13 @@ homeButton.addEventListener('click', backToMain)
 savedPostersButton.addEventListener('click', showSavedPosters)
 savedToHome.addEventListener('click', backToMain)
 showMyPosterButton.addEventListener('click', createMyPoster)
+saveThisPosterButton.addEventListener('click', saveCurrentPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
 
 function createPoster(imageURL, title, quote) {
   return {
@@ -146,7 +148,6 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote
   };
-
 }
 
 function getRandomContent() {
@@ -182,8 +183,7 @@ function showSavedPosters() {
 
 function createMyPoster(event){
 event.preventDefault();
-// currentPoster = createPoster(imageInput.value, titleInput.value, quoteInput.value )
-console.log(quoteInput.value, '<<<>>>>>')
+// currentPoster = createPoster(imageInput.value, titleInput.value, quoteInput.value)
 images.push(imageInput.value)
 titles.push(titleInput.value)
 quotes.push(quoteInput)
@@ -193,5 +193,17 @@ posterTitle.innerText = titleInput.value
 posterQuote.innerText = quoteInput.value
 backToMain();
 } 
+
+function saveCurrentPoster() {
+var isPosterSaved = false;
+  for (var i = 0; i < savedPosters.length; i++){
+    if (savedPosters[i].id === currentPoster.id){
+      isPosterSaved = true
+    }
+  };
+if (!isPosterSaved){
+  savedPosters.push(currentPoster)
+}
+}
 
 getRandomContent();
