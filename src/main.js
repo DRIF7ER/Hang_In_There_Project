@@ -2,6 +2,7 @@
 var posterImage = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
+
 //iteration 0
 var randomButton = document.querySelector('.show-random')
 var formButton = document.querySelector('.show-form')
@@ -12,7 +13,6 @@ var savedPostersPage = document.querySelector('.saved-posters')
 var homeButton = document.querySelector('.show-main')
 var savedPostersButton = document.querySelector('.show-saved')
 var savedToHome = document.querySelector('.back-to-main')
-
 
 //Iteraion 2
 var imageInput = document.querySelector("#poster-image-url")
@@ -222,7 +222,19 @@ function displaySavedPosters() {
       <h3 class="poster-quote">${poster.quote}</h3>
     `;
 
+    posterElement.addEventListener('dblclick', function(){
+      deletePoster(poster.id)
+    });
+
     savedPostersGrid.appendChild(posterElement);
   }
 };
+
+function deletePoster(posterId) {
+  savedPosters = savedPosters.filter(function(poster){
+    return poster.id !== posterId
+  });
+  displaySavedPosters();
+}
+
 getRandomContent();
