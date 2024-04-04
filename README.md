@@ -9,7 +9,7 @@ Finally we added the ability to delete any poster from the saved posters page by
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
 1. Click [Repo](https://github.com/DRIF7ER/Hang_In_There_Project) and fork repository.
 2. clone to local enviroment and cd in to cloned file. 
-3. open termin and run - open index.html
+3. Open terminal and run - open index.html
 4. Enjoy! 
 
 ### Preview of App:
@@ -37,4 +37,4 @@ Ensure all team members are able to be heard and contribute throughout the proje
 We used/added JavaScript to make the static Html and css page functional.
 ### Wins + Challenges:
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
-We established a solid github workgflow and really starting to understand how the flow works and fix issues using git commands. We also psuedocoded really well when creatiing each function. A challenge we faced was managing all the variables for the qeury selectors and event listeners.
+We established a solid github workflow and really starting to understand how the flow works and fix issues using git commands. We also psuedocoded really well when creatiing each function. A challenge we faced was managing all the variables for the query selectors and event listeners.
