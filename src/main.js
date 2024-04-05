@@ -24,6 +24,8 @@ var poster = document.querySelector('.poster')
 //Iteration 3
 var saveThisPosterButton = document.querySelector('.save-poster')
 
+var savedPostersGrid = document.querySelector('.saved-posters-grid');
+
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -123,8 +125,6 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-
-
  
 var savedPosters = [];
 var currentPoster;
@@ -159,11 +159,9 @@ function getRandomContent() {
   var randomTitle = titles[titleIndex];
   var quotesIndex = getRandomIndex(quotes);
   var randomQuote = quotes[quotesIndex];
-  createPoster(randomImage, randomTitle, randomQuote);
   posterImage.src = randomImage
   posterTitle.innerText = randomTitle;
   posterQuote.innerText = randomQuote;
-
   currentPoster = createPoster(randomImage, randomTitle, randomQuote)
 };
 
@@ -188,7 +186,7 @@ event.preventDefault();
 images.push(imageInput.value)
 titles.push(titleInput.value)
 quotes.push(quoteInput)
-
+currentPoster = createPoster(imageInput.value,titleInput.value, quoteInput.value)
 posterImage.src = imageInput.value
 posterTitle.innerText = titleInput.value
 posterQuote.innerText = quoteInput.value
@@ -209,24 +207,26 @@ function saveCurrentPoster() {
 };
 
 function displaySavedPosters() {
-  var savedPostersGrid = document.querySelector('.saved-posters-grid');
   savedPostersGrid.innerHTML = '';
   for(let i = 0; i < savedPosters.length; i++) {
-    var poster = savedPosters[i]; 
-    var posterElement = document.createElement('article');
-    posterElement.classList.add('poster');
+    var poster = savedPosters[i];
+    var miniPosterEntry = document.createElement('div')
+      miniPosterEntry.className= 'mini-poster'
+     
+    var miniPosterImage = document.createElement('img')
+      miniPosterImage.className ='mini-poster img'
+      miniPosterImage.src = poster.imageURL
+      miniPosterEntry.appendChild(miniPosterImage)
+     
+    var miniPosterText  =document.createElement('p')
+      miniPosterText.innerHTML = `<h2>${poster.title}</h2><h4>${poster.quote}</h4>`
+      miniPosterEntry.appendChild(miniPosterText)
 
-    posterElement.innerHTML = `
-      <img class="poster-img" src="${poster.imageURL}" alt="Poster image">
-      <h1 class="poster-title">${poster.title}</h1>
-      <h3 class="poster-quote">${poster.quote}</h3>
-    `;
+      miniPosterEntry.addEventListener('dblclick', function(){
+        deletePoster(poster.id)
+      });
 
-    posterElement.addEventListener('dblclick', function(){
-      deletePoster(poster.id)
-    });
-
-    savedPostersGrid.appendChild(posterElement);
+    savedPostersGrid.appendChild(miniPosterEntry);
   }
 };
 
@@ -234,6 +234,7 @@ function deletePoster(posterId) {
   savedPosters = savedPosters.filter(function(poster){
     return poster.id !== posterId
   });
+
   displaySavedPosters();
 }
 
